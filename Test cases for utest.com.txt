@@ -1,0 +1,109 @@
+Feature: Creating an account
+
+Scenario 1: User can successfully create an account
+
+Given: User is on the main page
+When: User presses “Join Today” button
+And User types “Ana”in the “First name” section
+And User types “Visanu” in the “Last name” section
+And User types "ana.visanu@gmail.com" in the "E-mail address" section
+And User selects "August" in the dropdown menu referring to month
+And User selects "10" in the dropdown menu referring to day
+And User selects "1989" in the dropdown menu referring to Year
+And User presses "Next: Location" button
+And User types "MD-2002" in the "Zip or Postal Code:" section
+And User presses "Next: Devices" button
+And User presses "Next: Last Step" button
+And User types "VejQ6898&" in the "Create your uTest password" section
+And User types "VejQ6898&" in the "Confirm password" section
+And User ticks "I have read and accept the uTerms of Use and the uTest Guidelines"
+And User ticks "I have read and accept the Privacy & Security Policy"
+And User presses "Complete Setup" button
+And User sees the message "First, please check your email inbox to confirm your address and complete your uTest registration."
+And User opens a new tab
+And User types "www.gmail.com" in the search section
+And User clicks on message sent by uTest
+And User clicks on "Confirm email address" in the message
+And User is redirected to a new tab
+Then: User sees the message "You're all set! Your account has been created. Sign in and start using uTest."
+
+When: User scrolls down to the bottom of the page
+And User presses "Sign Me Up!" button
+And User types “Ana”in the “First name” section
+And User types “Visanu” in the “Last name” section
+And User types "ana.visanu@gmail.com" in the "E-mail address" section
+And User selects "August" in the dropdown menu referring to month
+And User selects "11" in the dropdown menu referring to day
+And User selects "1989" in the dropdown menu referring to Year
+And User presses "Next: Location" button
+And User types "MD-2002" in the "Zip or Postal Code:" section
+And User presses "Next: Devices" button
+And User presses "Next: Last Step" button
+And User types "%vnreERbh45%" in the "Create your uTest password" section
+And User types "%vnreERbh45%" in the "Confirm password" section
+And User ticks "I have read and accept the uTerms of Use and the uTest Guidelines"
+And User ticks "I have read and accept the Privacy & Security Policy"
+And User presses "Complete Setup" button
+And User sees the message "First, please check your email inbox to confirm your address and complete your uTest registration."
+And User opens a new tab
+And User types "www.gmail.com" in the search section
+And User clicks on message sent by uTest
+And User clicks on "Confirm email address" in the message
+And User is redirected to a new tab
+Then: User sees the message "You're all set! Your account has been created. Sign in and start using uTest."
+
+
+Scenario 2: User can not successfully create an account
+
+Given: User is on the main page
+When: User presses “Join Today” button
+And User types in “   ”in the “First name” section
+Then: User sees warning “First name is required“
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User leaves "Last name" section blank
+Then: User sees warning “Last name is required“
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User types in "V" in the "Last name" section
+Then: User sees warning "Between 2 and 50 characters required"
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User types in "V1989" in the "Last name" section
+Then: User sees warning "No special characters"
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User types in “Visanu” in the “Last name” section
+And User types in "ana.visanu@gmai" in the "E-mail address" section
+Then: User sees warning "Enter valid email"
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User types in “Visanu” in the “Last name” section
+And User types in "ana.visanu@gmail.com" in the "E-mail address" section
+And User leaves "Date of birth:" section blank
+Then: User sees warning "Date of birth is required"
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User types in “Visanu” in the “Last name” section
+And User types in "ana.visanu@gmail.com" in the "E-mail address" section
+And User selects "January" in the dropdown menu referring to month
+And User selects "1" in the dropdown menu referring to day
+And User selects "1909" in the dropdown menu referring to Year
+Then: User sees warning "Enter valid date of birth"
+
+When User presses “Join Today” button
+And User types in “Ana” in the “First name” section
+And User types in “Visanu” in the “Last name” section
+And User types in "ana.visanu@gmail.com" in the "E-mail address" section
+And User selects "January" in the dropdown menu referring to month
+And User selects "1" in the dropdown menu referring to day
+And User selects "2000" in the dropdown menu referring to Year
+And User presses "Next: Location" button
+And User leaves "Zip or Postal Code:" section blank
+Then: User sees warning "Zip is required"
